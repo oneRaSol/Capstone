@@ -1,0 +1,105 @@
+<h1 style="text-align: center;">Product Admin</h1>
+<!-- <div  style="text-align: center; font-weight: bolder;" >
+<a class="btn btn-primary" href="#anchor-name">Add New</a>
+</div> -->
+<h2 id="anchor-name" style="text-align: center;">
+  <button class="btn btn-primary" (click)="scrollFunction1()"> Scroll to Add New </button>
+</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card">
+        <img [src]="'../../assets/images/products/' + product.image_name" alt="{{ product.name }}" class="card-img-top">
+        <div class="card-body">
+          <h2 class="card-title">{{ product.name }}</h2>
+          <p class="card-text">{{ product.shortDescription }}</p>
+          <p class="card-text">Price: {{ product.regular_price | currency }}</p>
+          <p class="card-text">Quantity: {{ product.quantity }}</p>
+          <button class="btn btn-primary" (click)="updateProduct(product)">Update</button>
+          <button class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+<h2 id="anchorname" style="text-align: center;">Add a Product</h2>
+<form (submit)="addProduct(product)" style="margin-left: 230px; margin-right: 230px;">
+  <fieldset>
+    <legend>Enter all product info.</legend>
+  <div class="form-group">
+    <label for="name">Product Name:</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="product.name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select class="form-control" id="category" [(ngModel)]="product.category_id" name="category" required>
+      <option value="64acd66953d13fde133b33a9">Electronics</option>
+      <option value="64acd66953d13fde133b33aa">Smartphone & Table</option>
+      <option value="64acd66953d13fde133b33ab">Batteries & Chargers</option>
+      <option value="64acd66953d13fde133b33ac">Headphone & Headsets</option>
+      <option value="64acd66953d13fde133b33ad">IMp3 Player & Accessories</option>
+      <option value="64acd66953d13fde133b33ae">Batteries & Chargers</option>
+      <option value="64acd66953d13fde133b33af">IMp3 Player & Headphones</option>
+      <option value="64acd66953d13fde133b33b0">Table & Accessories</option>
+    </select>
+  </div>
+  <!-- <div class="form-group">
+    <label for="slug">Slug:</label>
+    <input type="text" class="form-control" id="slug" [(ngModel)]="product.slug" name="slug" required>
+  </div> -->
+  <div class="form-group">
+    <label for="shortDescription">Short Description:</label>
+    <input type="text" class="form-control" id="shortDescription" [(ngModel)]="product.shortDescription" name="shortDescription" required>
+  </div>
+  <div class="form-group">
+    <label for="description">long Description:</label>
+    <textarea class="form-control" id="description" [(ngModel)]="product.description" name="description" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="regular_price">Regular Price:</label>
+    <input type="number" class="form-control" id="regular_price" [(ngModel)]="product.regular_price" name="regular_price" required>
+  </div>
+  <div class="form-group">
+    <label for="sales_price">Sales Price:</label>
+    <input type="number" class="form-control" id="sales_price" [(ngModel)]="product.sales_price" name="sales_price" required>
+  </div>
+  <div class="form-group">
+    <label for="sku">SKU:</label>
+    <input type="text" class="form-control" id="sku" [(ngModel)]="product.sku" name="sku" required>
+  </div>
+  <div class="form-group">
+    <label for="stock_status">Stock Status:</label>
+    <select class="form-control" id="stock_status" [(ngModel)]="product.stock_status" name="stock_status" required>
+      <option value="instock">In Stock</option>
+      <option value="outofstock">Out of Stock</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="featured">Featured:</label>
+    <input type="checkbox" class="form-control" id="featured" [(ngModel)]="product.featured" name="featured">
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity:</label>
+    <input type="number" class="form-control" id="quantity" [(ngModel)]="product.quantity" name="quantity" required>
+  </div>
+  <div class="form-group">
+    <label for="image_name">Image Path:</label>
+    <input type="text" class="form-control" id="image_name" [(ngModel)]="product.image_name" name="image_name" required>
+  </div>
+  <div class="form-group">
+    <label for="image_des">Image Description:</label>
+    <input type="text" class="form-control" id="image_des" [(ngModel)]="product.image_des" name="image_des" required>
+  </div>
+  <div style="text-align: center;">
+  <button type="submit" class="btn btn-primary">Add Product</button>
+</div>
+</fieldset>
+</form>
+</section>
+<!-- <div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+</div> -->
